@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Enreach.handleGetUser(data : Data, response : URLResponse) -&gt; ():Enreach.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Enreach.init() -&gt; Enreach:Enreach.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.(getCampaignsClicked(Any) -&gt; ()).(closure #1):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Enreach.shared">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

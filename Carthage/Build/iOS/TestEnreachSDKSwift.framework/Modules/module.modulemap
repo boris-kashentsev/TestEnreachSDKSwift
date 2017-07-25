@@ -1,0 +1,10 @@
+framework module TestEnreachSDKSwift {
+  umbrella header "TestEnreachSDKSwift.h"
+
+  export *
+  module * { export * }
+}
+
+module TestEnreachSDKSwift.Swift {
+    header "TestEnreachSDKSwift-Swift.h"
+}
