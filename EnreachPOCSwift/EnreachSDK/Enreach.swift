@@ -15,14 +15,14 @@ private class SingletonSetupHelper {
 }
 
 public class Enreach {
-  static let shared = Enreach()
+  public static let shared = Enreach()
   private static let setup = SingletonSetupHelper()
   private var responseData: Data
   
-  var evid: String
-  var paths: EnreachPaths
+  public var evid: String
+  public var paths: EnreachPaths
   
-  class func setup(parameters:[String:String]) {
+  public class func setup(parameters:[String:String]) {
     Enreach.setup.parameterms = parameters
   }
   
