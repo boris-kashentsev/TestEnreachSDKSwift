@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CampaignsResponse {
+public class CampaignsResponse {
   var evId: String
   var campaignIds: [String:String]
   var segments: [String]

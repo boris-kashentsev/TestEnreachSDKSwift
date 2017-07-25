@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnreachPaths {
+public class EnreachPaths {
   
   var domain: String
   

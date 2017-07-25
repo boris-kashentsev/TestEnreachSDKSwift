@@ -14,7 +14,7 @@ private class SingletonSetupHelper {
   var parameterms: [String:String]?
 }
 
-class Enreach {
+public class Enreach {
   static let shared = Enreach()
   private static let setup = SingletonSetupHelper()
   private var responseData: Data

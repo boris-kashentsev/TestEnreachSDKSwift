@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdInfo {
+public class AdInfo {
   let pId: String
   let adId: String
   let bnId: String
