@@ -25,7 +25,7 @@ public class EnreachPaths {
   
   var admpApiVersion: String = admpApiVersionConst
   
-  init(with parameters:[String:String]) {
+  public init(with parameters:[String:String]) {
     if parameters["domain"] != nil {
       self.domain = parameters["domain"]!
     }

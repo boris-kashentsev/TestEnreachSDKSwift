@@ -9,14 +9,14 @@
 import UIKit
 
 public class CampaignsResponse {
-  var evId: String
-  var campaignIds: [String:String]
-  var segments: [String]
-  var reference: Bool
+  public var evId: String
+  public var campaignIds: [String:String]
+  public var segments: [String]
+  public var reference: Bool
   
-  var vv: String
+  public var vv: String
   
-  init(with jsonString:String) {
+  public init(with jsonString:String) {
     self.evId = String()
     self.campaignIds = [String:String]()
     self.segments = [String]()

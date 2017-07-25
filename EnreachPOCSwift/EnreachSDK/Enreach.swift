@@ -41,11 +41,11 @@ public class Enreach {
     debugPrint("STATUS: Enreach.shared initialized")
   }
   
-  func isEmptyEvid() -> Bool {
+  public func isEmptyEvid() -> Bool {
     return evid == EMPTYEVID
   }
   
-  func clearEvid() {
+  public func clearEvid() {
     evid = EMPTYEVID;
     UserDefaults.standard.removeObject(forKey: "evid")
   }
@@ -64,7 +64,7 @@ public class Enreach {
     return str
   }
   
-  func getUserEvid() {
+  public func getUserEvid() {
     if UserDefaults.standard.object(forKey: "evId") != nil {
       self.evid = UserDefaults.standard.object(forKey: "evId") as! String
     }
@@ -141,7 +141,7 @@ public class Enreach {
     }
   }
   
-  func getCampaigns(with block:@escaping (_ result: CampaignsResponse) -> Void) {
+  public func getCampaigns(with block:@escaping (_ result: CampaignsResponse) -> Void) {
     let getCampaignsURL:URL = URL(string: paths.getCampaigns(with: ["evid": evid, "includeSegments":"true"]))!
     let dataTask:URLSessionDataTask = URLSession.shared.dataTask(with: getCampaignsURL) { (data:Data?, response:URLResponse?, error:Error?) in
       let jsonResponse:String = String(data:data!, encoding: .utf8)!
@@ -151,7 +151,7 @@ public class Enreach {
     dataTask.resume()
   }
   
-  func getCampaignsSync() -> CampaignsResponse {
+  public func getCampaignsSync() -> CampaignsResponse {
     let getCampaignsURL:URL = URL(string: paths.getCampaigns(with: ["evid": evid, "includeSegments":"true"]))!
     let semaphore = DispatchSemaphore(value: 1)
     let dataTask:URLSessionDataTask = URLSession.shared.dataTask(with: getCampaignsURL) { (data:Data?, response:URLResponse?, error:Error?) in
@@ -165,7 +165,7 @@ public class Enreach {
     return CampaignsResponse(with: String(data: responseData, encoding: .utf8)!)
   }
   
-  func serVisitor(with provider:String, id:String) {
+  public func serVisitor(with provider:String, id:String) {
     let parameters: [String:String] = ["source":provider, "id":id, "evid":evid]
     
     let registerURL : URL = URL(string: paths.register(with: parameters))!
@@ -176,7 +176,7 @@ public class Enreach {
     dataTask.resume()
   }
   
-  func pageStat(with location:String) {
+  public func pageStat(with location:String) {
     let parameters : [String:String] = ["location":location, "evid":evid]
     
     let pageStatURL : URL = URL(string: paths.pageStat(with: parameters))!
@@ -188,11 +188,11 @@ public class Enreach {
     dataTask.resume()
   }
   
-  func placementStat(with location:String, ids:[String]) {
+  public func placementStat(with location:String, ids:[String]) {
     placementStat(with: "id", location: location, ids: ids)
   }
   
-  func placementStat(with source:String, location:String, ids:[String]) {
+  public func placementStat(with source:String, location:String, ids:[String]) {
     let parameters : [String:String] = ["location": location, "evid": evid, "source":source, "values": ids.joined(separator: ",")]
     
     let placementStatURL = URL(string: paths.placementStat(with: parameters))!
@@ -204,7 +204,7 @@ public class Enreach {
     dataTask.resume()
   }
   
-  func arStat(with location:String) {
+  public func arStat(with location:String) {
     let parameters : [String:String] = ["location": location, "evid": evid]
     
     let arStatURL : URL = URL(string: paths.adStat(with: parameters))!
@@ -230,49 +230,49 @@ public class Enreach {
     dataTask.resume()
   }
   
-  func adDwellTime(with location:String, adInfo:AdInfo) {
+  public func adDwellTime(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.DWELL) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func adClick(with location:String, adInfo:AdInfo) {
+  public func adClick(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.CLICK) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func adImpression(with location:String, adInfo:AdInfo) {
+  public func adImpression(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.IMPRESSION) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func videoStart(with location:String, adInfo:AdInfo) {
+  public func videoStart(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.VIDEO_START) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func videoFirstQuartile(with location:String, adInfo:AdInfo) {
+  public func videoFirstQuartile(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.VIDEO_FIRST_QUARTILE) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func videoMidPoint(with location:String, adInfo:AdInfo) {
+  public func videoMidPoint(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.VIDEO_MIDPOINT) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func videoThirdQuartile(with location:String, adInfo:AdInfo) {
+  public func videoThirdQuartile(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.VIDEO_THIRD_QUARTILE) , adInfo: adInfo)
     
     adStatTask(with: parameters)
   }
   
-  func videoComplete(with location:String, adInfo:AdInfo) {
+  public func videoComplete(with location:String, adInfo:AdInfo) {
     let parameters : [String:String] = getParameters(with: evid, location: location, action: AdStatState.shared.getType(AdStatStateEnum.VIDEO_COMPLETE) , adInfo: adInfo)
     
     adStatTask(with: parameters)
